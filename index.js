@@ -29,7 +29,9 @@ const server = app.listen(PORT, () => {
 });
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    // origin: "http://localhost:5173",
+    // origin: "https://messenger-client-ruby.vercel.app/",
+    origin: "*",
     credentials: true,
   },
 });
