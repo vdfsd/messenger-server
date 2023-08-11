@@ -19,10 +19,16 @@ const DB_NAME = process.env.DB_NAME;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("images"));
 
 app.use("/api/auth", authRoute);
 app.use("/api", searchRoute);
 app.use("/api/messages", messagesRoute);
+
+app.get("/images/:imageName", (req, res) => {
+  const { imageName } = req.params;
+  res.sendFile(imageName, { root: "/images" });
+});
 
 const server = app.listen(PORT, () => {
   console.log(`server start on port ${PORT}`);
