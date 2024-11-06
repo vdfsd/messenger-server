@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import authRoute from "./routes/auth.js";
 import searchRoute from "./routes/search.js";
 import messagesRoute from "./routes/messages.js";
+import verifyEmail from "./routes/verifyEmail.js";
 import { Server } from "socket.io";
 import Messages from "./model/Message.js";
 import User from "./model/User.js";
@@ -23,6 +24,8 @@ app.use(express.static("images"));
 
 app.use("/api/auth", authRoute);
 app.use("/api", searchRoute);
+app.use("/api/validation", verifyEmail);
+app.use("/api/messages", messagesRoute);
 app.use("/api/messages", messagesRoute);
 
 app.get("/images/:imageName", (req, res) => {
@@ -64,9 +67,7 @@ io.on("connection", (socket) => {
 
     if (sendUserSocket) {
       const user = existedChat !== null ? null : userFrom;
-      socket
-        .to(sendUserSocket)
-        .emit("msg-recieve", { data: data.message, user });
+      socket.to(sendUserSocket).emit("msg-recieve", { data: data.message, user });
     }
   });
 });
