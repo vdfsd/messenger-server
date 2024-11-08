@@ -4,7 +4,7 @@ export const verifyEmail = async (req, res) => {
   console.log(email, "email data");
   console.log(req.body, "req.body");
   try {
-    const emails = ["test@mail.com"];
+    const emails = ["test@mail.com", "dontsul.v@gmail.com", "vgoatd@gmail.com"];
 
     if (!email) {
       throw new Error("email not found");
