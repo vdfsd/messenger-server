@@ -1,7 +1,6 @@
 export const verifyEmail = async (req, res) => {
   const { email } = req.body;
-  console.log("get data request");
-  console.log(email, "email data");
+
   console.log(req.body, "req.body");
   try {
     const emails = ["test@mail.com", "dontsul.v@gmail.com", "vgoatd@gmail.com"];
@@ -9,7 +8,10 @@ export const verifyEmail = async (req, res) => {
     if (!email) {
       throw new Error("email not found");
     }
-    return res.json({ isVerified: emails.includes(email) ? true : false });
+    const isVerified = emails.includes(email) ? true : false;
+
+    console.log(isVerified, "isVerified result");
+    return res.json({ isVerified });
   } catch (error) {
     console.log("error");
   }
