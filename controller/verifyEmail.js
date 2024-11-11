@@ -2,6 +2,8 @@ export const verifyEmail = async (req, res) => {
   const origin = req.headers.origin;
   const { email } = req.body;
 
+  console.log(req.body, "req.body data");
+
   try {
     const emails = ["test@mail.com", "dontsul.v@gmail.com", "vgoatd@gmail.com"];
 
