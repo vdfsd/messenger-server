@@ -26,7 +26,6 @@ app.use("/api/auth", authRoute);
 app.use("/api", searchRoute);
 app.use("/api/validation", verifyEmail);
 app.use("/api/messages", messagesRoute);
-app.use("/api/messages", messagesRoute);
 
 app.get("/images/:imageName", (req, res) => {
   const { imageName } = req.params;
