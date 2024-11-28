@@ -33,7 +33,15 @@ export const isMFAEnabled = async (req, res) => {
       throw new Error("email not found");
     }
 
-    return res.json({ isPhoneMfaEnabled: true, isEmailMfaEnabled: false });
+    const isPhoneMfaEnabled = true;
+    const isEmailMfaEnabled = true;
+    const isMfaChoiceAvailable = isPhoneMfaEnabled && isEmailMfaEnabled;
+
+    return res.json({
+      isPhoneMfaEnabled,
+      isEmailMfaEnabled,
+      isMfaChoiceAvailable,
+    });
   } catch (error) {
     console.log("error");
   }
